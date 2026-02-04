@@ -241,6 +241,7 @@ export default class ZettelScriptPlugin extends Plugin {
     const { stdout } = await execFileAsync(cliCommand, cliArgs, {
       cwd: vaultPath,
       timeout: 120000,
+      shell: true,
     });
 
     return stdout;
@@ -415,6 +416,7 @@ export default class ZettelScriptPlugin extends Plugin {
       const { stdout, stderr } = await execFileAsync(cliCommand, cliArgs, {
         cwd: vaultPath,
         timeout: 120000,
+        shell: true,
       });
 
       statusBar.setText('ZS: Ready');
