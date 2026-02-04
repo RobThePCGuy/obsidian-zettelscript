@@ -231,7 +231,9 @@ export default class ZettelScriptPlugin extends Plugin {
   private buildCommand(args: string[]): { command: string; args: string[] } {
     const cliParts = this.settings.cliPath.split(' ');
     if (this.settings.useWsl) {
-      return { command: 'wsl', args: ['-e', ...cliParts, ...args] };
+      // Use login shell so .bashrc/.profile load (needed for nvm/fnm)
+      const fullCmd = [...cliParts, ...args].join(' ');
+      return { command: 'wsl', args: ['bash', '-lc', fullCmd] };
     }
     return { command: cliParts[0], args: [...cliParts.slice(1), ...args] };
   }
