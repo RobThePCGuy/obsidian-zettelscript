@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-zettelscript",
+  "name": "ZettelScript",
+  "version": "0.1.0",
+  "minAppVersion": "1.0.0",
+  "description": "Integrates ZettelScript CLI for graph-first knowledge management, vault generation, and link injection.",
+  "author": "ZettelScript Contributors",
+  "authorUrl": "https://github.com/RobThePCGuy/ZettelScript",
+  "isDesktopOnly": true
+}

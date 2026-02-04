@@ -1,0 +1,224 @@
+/* ZettelScript Obsidian Plugin Styles */
+
+.modal-button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.modal-button-container button {
+  padding: 8px 16px;
+}
+
+/* Suggestions View Styles */
+
+.zs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.zs-header h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.zs-health-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.zs-health-ok {
+  background: var(--background-modifier-success);
+  color: var(--text-on-accent);
+}
+
+.zs-health-warn {
+  background: var(--background-modifier-error);
+  color: var(--text-on-accent);
+}
+
+.zs-health-fail {
+  background: var(--color-red);
+  color: var(--text-on-accent);
+}
+
+.zs-section {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.zs-section:last-child {
+  border-bottom: none;
+}
+
+.zs-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 12px;
+}
+
+.zs-section-header h5 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.zs-list {
+  padding: 0 8px;
+}
+
+.zs-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: default;
+}
+
+.zs-row:hover {
+  background: var(--background-modifier-hover);
+}
+
+.zs-row-info {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.zs-row-title {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.zs-clickable {
+  cursor: pointer;
+  color: var(--text-accent);
+}
+
+.zs-clickable:hover {
+  text-decoration: underline;
+}
+
+.zs-score {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.zs-orphan-score {
+  font-size: 11px;
+  color: var(--text-error);
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+/* Candidate Link Row */
+.zs-candidate-row {
+  flex-wrap: wrap;
+}
+
+.zs-link-text {
+  font-size: 13px;
+}
+
+.zs-from-title {
+  color: var(--text-muted);
+}
+
+.zs-arrow {
+  color: var(--text-faint);
+  margin: 0 4px;
+}
+
+.zs-to-title {
+  color: var(--text-normal);
+}
+
+.zs-ghost {
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+.zs-actions {
+  display: flex;
+  gap: 4px;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.zs-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.zs-btn:hover {
+  background: var(--background-modifier-hover);
+}
+
+.zs-btn-approve:hover {
+  color: var(--text-success);
+  background: var(--background-modifier-success);
+}
+
+.zs-btn-reject:hover {
+  color: var(--text-error);
+  background: var(--background-modifier-error);
+}
+
+/* Orphan Row */
+.zs-orphan-row {
+  gap: 8px;
+}
+
+.zs-warning-icon {
+  color: var(--text-warning);
+  flex-shrink: 0;
+}
+
+/* Empty States */
+.zs-empty-state {
+  padding: 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.zs-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Tooltips for rows with reasons */
+.has-tooltip {
+  position: relative;
+}
