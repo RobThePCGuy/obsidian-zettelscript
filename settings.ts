@@ -1,9 +1,11 @@
-import { App, PluginSettingTab, Setting } from 'obsidian';
+import { App, Platform, PluginSettingTab, Setting } from 'obsidian';
 import type ZettelScriptPlugin from './main';
 
 export interface ZettelScriptSettings {
   /** Path to ZettelScript CLI or 'npx' to use npx */
   cliPath: string;
+  /** Run CLI commands through WSL (for Windows users with Node.js in WSL) */
+  useWsl: boolean;
   /** Auto-sync on file change */
   autoSync: boolean;
   /** Sync interval in minutes (0 = disabled) */
@@ -16,6 +18,7 @@ export interface ZettelScriptSettings {
 
 export const DEFAULT_SETTINGS: ZettelScriptSettings = {
   cliPath: 'npx zettelscript',
+  useWsl: false,
   autoSync: false,
   syncInterval: 0,
   kbPath: '.narrative-project/kb',
@@ -49,6 +52,19 @@ export class ZettelScriptSettingTab extends PluginSettingTab {
             await this.plugin.saveSettings();
           })
       );
+
+    // WSL Mode (Windows only)
+    if (Platform.isWin) {
+      new Setting(containerEl)
+        .setName('Use WSL')
+        .setDesc('Run CLI commands through Windows Subsystem for Linux. Enable if Node.js is installed in WSL, not Windows.')
+        .addToggle((toggle) =>
+          toggle.setValue(this.plugin.settings.useWsl).onChange(async (value) => {
+            this.plugin.settings.useWsl = value;
+            await this.plugin.saveSettings();
+          })
+        );
+    }
 
     // KB Path
     new Setting(containerEl)

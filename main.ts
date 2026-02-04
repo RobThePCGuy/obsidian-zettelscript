@@ -228,17 +228,24 @@ export default class ZettelScriptPlugin extends Plugin {
     }
   }
 
+  private buildCommand(args: string[]): { command: string; args: string[] } {
+    const cliParts = this.settings.cliPath.split(' ');
+    if (this.settings.useWsl) {
+      return { command: 'wsl', args: ['-e', ...cliParts, ...args] };
+    }
+    return { command: cliParts[0], args: [...cliParts.slice(1), ...args] };
+  }
+
   private async execZs(args: string[]): Promise<string> {
     const vaultPath = this.getVaultPath();
     if (!vaultPath) {
       throw new Error('Could not determine vault path');
     }
 
-    const cliParts = this.settings.cliPath.split(' ');
-    const cliCommand = cliParts[0];
-    const cliArgs = [...cliParts.slice(1), ...args];
+    const { command, args: cmdArgs } = this.buildCommand(args);
 
-    const { stdout } = await execFileAsync(cliCommand, cliArgs, {
+    // WSL auto-translates the Windows CWD to /mnt/c/...
+    const { stdout } = await execFileAsync(command, cmdArgs, {
       cwd: vaultPath,
       timeout: 120000,
       shell: true,
@@ -409,11 +416,9 @@ export default class ZettelScriptPlugin extends Plugin {
     statusBar.setText('ZS: Running...');
 
     try {
-      const cliParts = this.settings.cliPath.split(' ');
-      const cliCommand = cliParts[0];
-      const cliArgs = [...cliParts.slice(1), ...command.split(' ')];
+      const { command: cmd, args: cmdArgs } = this.buildCommand(command.split(' '));
 
-      const { stdout, stderr } = await execFileAsync(cliCommand, cliArgs, {
+      const { stdout, stderr } = await execFileAsync(cmd, cmdArgs, {
         cwd: vaultPath,
         timeout: 120000,
         shell: true,
