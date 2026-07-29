@@ -1,5 +1,13 @@
 # Obsidian ZettelScript Plugin
 
+> **This repository is archived and read-only.**
+>
+> This plugin was never actually released: no build was ever attached to a release, and it was never listed in Obsidian's community plugin directory. Both installation methods described below never worked.
+>
+> **Where this is going.** The ZettelScript CLI that this plugin wrapped is folding into [rag-vault](https://github.com/RobThePCGuy/rag-vault). Obsidian stays in the plan — the aim is for the graph to open in Obsidian directly, with no plugin to install.
+>
+> The code and history stay here for reference until that move is finished.
+
 Integrates [ZettelScript CLI](https://github.com/RobThePCGuy/ZettelScript) with Obsidian for graph-first knowledge management, vault generation, and automatic link injection.
 
 ## Features
